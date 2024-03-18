@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Nurse</title>
+    <!-- Add other head elements as needed -->
+    <style>
+        /* Include styles if necessary */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Delete Nurse</h2>
+        <p>Are you sure you want to delete the nurse with ID {{ nurse.id }} and name {{ nurse.name }}?</p>
+
+        <form method="POST" action="{% url 'delete_nurse' pk=nurse.id %}" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="delete btn btn-danger">Delete</button>
+        </form>
+
+        <a href="{% url 'nurse_list' %}" style="color:#000000; margin-left: 10px;">Cancel</a>
+
+        <br><br>
+        <div class="footer-container">
+            <a href="{% url 'nurse_list' %}" style="color:#000000">Back to Nurse List</a>
+        </div>
+    </div>
+</body>
+</html>

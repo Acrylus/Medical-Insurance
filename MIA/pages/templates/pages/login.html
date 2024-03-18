@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <style>
+        /* Form styles */
+        body {
+            background-color: #adc9cd;
+            display: flex; /* Use flexbox to create a horizontal layout */
+            justify-content: space-between; /* Space between columns */
+            align-items: center; /* Vertically center */
+        }
+
+        .background-container {
+            flex: 1;
+            background: linear-gradient(to right, transparent 80%, #adc9cd 100%), linear-gradient(to left, transparent 90%, #adc9cd 100%), url("{% static 'images/bgadmin.jpg' %}");
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+        }
+
+        
+        .container {
+            flex: 1; /* Takes up available space in the right column */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Horizontally center */
+            justify-content: center; /* Vertically center */
+        }
+
+        .d {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #fafcfc;
+            color: black;
+            padding: 40px 20px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            max-width: 500px;    
+        }
+
+        .top-bar {
+            background-color: #00acb1;
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+            padding: 20px 0;
+            border-radius: 10px 10px 0 0; /* Rounded top corners */
+            text-align: center; /* Center text inside the bar */
+            width: 72%;
+        }
+
+        label {
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        input[type=text],
+        input[type=password] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #c2d7da;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button[type=submit] {
+            background-color: #00acb1;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type=submit]:hover {
+            background-color: #009196;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        // JavaScript function to show alert message
+        function showAlert(message) {
+            alert(message);
+        }
+    </script>
+</head>
+<body>
+    <div class="background-container"></div>
+    <div class="container">
+        <div class="top-bar"><h1>Admin Log-in</h1></div>
+        <div class="d">
+            <form method="post" action="{% url 'login' %}" novalidate>
+                {% csrf_token %}
+                {{form.as_p}}
+
+                <center><button type="submit" name="submit" value="Login">LOGIN</button></center>
+                <p style="text-align: center; color: black;">Don't have an account? <a href="{%url 'register' %}">Register</a></p>
+            </form><br>
+            <center><h4><i>"Time and health are two precious assets that we don't recognize and appreciate until they have been
+                    depleted."</i></h4></center>
+        </div>
+    </div>
+</body>
+</html>
